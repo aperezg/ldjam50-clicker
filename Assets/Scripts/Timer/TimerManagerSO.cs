@@ -6,8 +6,8 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "TimerManagerSO", menuName = "ScriptableObjects/Timer Manager")]
 public class TimerManagerSO : ScriptableObject
 {
-    public float initTime;
-
+    [SerializeField]
+    private float initTime;
     [SerializeField] 
     private float currentTimer;
     [SerializeField]
