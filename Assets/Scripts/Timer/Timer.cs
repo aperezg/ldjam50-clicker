@@ -6,38 +6,31 @@ public class Timer : MonoBehaviour
 {
     [Header("Dependencies")]
     public TMP_Text timer;
+    public TimerManagerSO timerManager;
 
     [Header("Configuration")]
-    public float startTime;
     public bool timerStarted;
 
-    private float _currentTime;
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
-        _currentTime = startTime;
+        timerManager.timerChangeEvent.AddListener(DrawTimer);
+    }
+
+    private void OnDisable()
+    {
+        timerManager.timerChangeEvent.RemoveListener(DrawTimer);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerStarted)
-        {
-            _currentTime -= Time.deltaTime;
-            if (_currentTime <= 0)
-            {
-                timerStarted = false;
-                _currentTime = 0;
-            }
-        }
-        Draw();
+        timerManager.DecreaseTime(Time.deltaTime);
     }
 
-    private void Draw()
+    private void DrawTimer(float currentTimer)
     {
-        var minutes = TimeSpan.FromSeconds(_currentTime).Minutes;
-        var seconds = TimeSpan.FromSeconds(_currentTime).Seconds;
+        var minutes = TimeSpan.FromSeconds(currentTimer).Minutes;
+        var seconds = TimeSpan.FromSeconds(currentTimer).Seconds;
 
         var minutesStr = (minutes < 10) ? string.Concat("0", minutes.ToString()) : minutes.ToString();
         var secondsStr = (seconds < 10) ? string.Concat("0", seconds.ToString()) : seconds.ToString();
