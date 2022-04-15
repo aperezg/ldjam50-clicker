@@ -35,6 +35,15 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""66cc7d02-7774-44f1-8fa5-24d85f212d27"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -46,6 +55,17 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse"",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dbb9d35-ce80-4235-94be-7d0461d5568c"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -69,6 +89,7 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
         // Click
         m_Click = asset.FindActionMap("Click", throwIfNotFound: true);
         m_Click_Click = m_Click.FindAction("Click", throwIfNotFound: true);
+        m_Click_Position = m_Click.FindAction("Position", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -129,11 +150,13 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Click;
     private IClickActions m_ClickActionsCallbackInterface;
     private readonly InputAction m_Click_Click;
+    private readonly InputAction m_Click_Position;
     public struct ClickActions
     {
         private @CursorActions m_Wrapper;
         public ClickActions(@CursorActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click => m_Wrapper.m_Click_Click;
+        public InputAction @Position => m_Wrapper.m_Click_Position;
         public InputActionMap Get() { return m_Wrapper.m_Click; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -146,6 +169,9 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
                 @Click.started -= m_Wrapper.m_ClickActionsCallbackInterface.OnClick;
                 @Click.performed -= m_Wrapper.m_ClickActionsCallbackInterface.OnClick;
                 @Click.canceled -= m_Wrapper.m_ClickActionsCallbackInterface.OnClick;
+                @Position.started -= m_Wrapper.m_ClickActionsCallbackInterface.OnPosition;
+                @Position.performed -= m_Wrapper.m_ClickActionsCallbackInterface.OnPosition;
+                @Position.canceled -= m_Wrapper.m_ClickActionsCallbackInterface.OnPosition;
             }
             m_Wrapper.m_ClickActionsCallbackInterface = instance;
             if (instance != null)
@@ -153,6 +179,9 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @Position.started += instance.OnPosition;
+                @Position.performed += instance.OnPosition;
+                @Position.canceled += instance.OnPosition;
             }
         }
     }
@@ -169,5 +198,6 @@ public partial class @CursorActions : IInputActionCollection2, IDisposable
     public interface IClickActions
     {
         void OnClick(InputAction.CallbackContext context);
+        void OnPosition(InputAction.CallbackContext context);
     }
 }

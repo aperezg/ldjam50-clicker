@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec259847604ce9f489dc89ec483b26db, type: 3}
-  m_Name: Timer Manager
+  m_Script: {fileID: 11500000, guid: 61f307f9efd963c4ba823fa361c50645, type: 3}
+  m_Name: Money Manager
   m_EditorClassIdentifier: 
-  initTime: 600
-  currentTimer: 600
-  timerRunning: 1
+  initMoney: 0
+  currentMoney: 0
