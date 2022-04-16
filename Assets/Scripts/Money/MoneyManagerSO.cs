@@ -13,10 +13,13 @@ public class MoneyManagerSO : ScriptableObject
     [SerializeField]
     private int incrementBase;
 
+
     [System.NonSerialized]
     public UnityEvent<int> moneyChangeEvent;
     [System.NonSerialized]
     public UnityEvent notEnoughMoneyEvent;
+
+    public int CurrentMoney { get => currentMoney; }
 
     private void OnEnable()
     {
@@ -27,20 +30,20 @@ public class MoneyManagerSO : ScriptableObject
             notEnoughMoneyEvent = new UnityEvent();
     }
 
-    public void DecreaseMoney(int amount)
+    public void DecrementMoney(int decrement)
     {
-        if (currentMoney <= 0)
-        {
-            notEnoughMoneyEvent.Invoke();
-            return;
-        }
+        currentMoney -= decrement;
 
-        currentMoney -= amount;
         if (currentMoney <= 0)
         {
             currentMoney = 0;
         }
         moneyChangeEvent.Invoke(currentMoney);
+    }
+
+    public void NotEnoughMoney()
+    {
+        notEnoughMoneyEvent.Invoke();
     }
 
     public void IncrementMoney()

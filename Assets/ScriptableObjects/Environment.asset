@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9a3ef2371f8094f9a77b143a1ee24a, type: 3}
+  m_Name: Environment
+  m_EditorClassIdentifier: 
+  moneyManager: {fileID: 11400000, guid: cde9c7f5d12f0f7499ca3e507e29995b, type: 2}
+  inversionName: Environment
+  baseCost: 100
+  currentCos: 100
+  currentInversion: 0
+  incrementor: 5
