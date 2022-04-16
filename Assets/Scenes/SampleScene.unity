@@ -973,10 +973,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df8d79c885625d4c9be9ea5233bbaa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyManager: {fileID: 11400000, guid: cde9c7f5d12f0f7499ca3e507e29995b, type: 2}
-  onClickWorldEvent:
+  clickEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1586242896}
+        m_TargetAssemblyTypeName: Money, Assembly-CSharp
+        m_MethodName: IncrementMoney
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _scaleChange: {x: 0.2, y: 0.2, z: 0.2}
 --- !u!1 &1499584428
 GameObject:

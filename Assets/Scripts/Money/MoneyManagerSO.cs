@@ -10,6 +10,8 @@ public class MoneyManagerSO : ScriptableObject
     private int initMoney;
     [SerializeField]
     private int currentMoney;
+    [SerializeField]
+    private int incrementBase;
 
     [System.NonSerialized]
     public UnityEvent<int> moneyChangeEvent;
@@ -41,9 +43,9 @@ public class MoneyManagerSO : ScriptableObject
         moneyChangeEvent.Invoke(currentMoney);
     }
 
-    public void IncrementMoney(int amount)
+    public void IncrementMoney()
     {
-        currentMoney += amount;
+        currentMoney += incrementBase;
         moneyChangeEvent.Invoke(currentMoney);
     }
 

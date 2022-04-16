@@ -22,4 +22,9 @@ public class Money : MonoBehaviour
     {
         moneyText.text = string.Format("{0}$", amount.ToString());
     }
+
+    public void IncrementMoney()
+    {
+        moneyManager.IncrementMoney();
+    }
 }

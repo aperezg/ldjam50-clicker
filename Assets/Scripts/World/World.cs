@@ -5,17 +5,23 @@ using UnityEngine.Events;
 
 public class World : MonoBehaviour, IClickable
 {
-    [Header("Dependencies")]
-    public MoneyManagerSO moneyManager;
+    [Header("Events")]
+    [SerializeField]
+    private UnityEvent clickEvent;
 
     private Transform _transform;
     [SerializeField]
     private Vector3 _scaleChange;
     private bool _onClickActive;
 
-    private void Awake()
+    private void OnEnable()
     {
         _transform = GetComponent<Transform>();
+        if (clickEvent == null)
+        {
+            clickEvent = new UnityEvent();
+        }
+        
     }
 
     // Update is called once per frame
@@ -24,11 +30,10 @@ public class World : MonoBehaviour, IClickable
         
     }
 
-    public void onClickAction()
+    public void OnClickAction()
     {
         StartCoroutine(Click());
-        //TODO: this amount should be calculate in base a level or something on the money manager directly
-        moneyManager.IncrementMoney(5);
+        clickEvent.Invoke();
     }
 
     private IEnumerator Click()

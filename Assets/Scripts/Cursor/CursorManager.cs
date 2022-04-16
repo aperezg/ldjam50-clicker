@@ -47,7 +47,7 @@ public class CursorManager : MonoBehaviour
             if (hit.collider != null)
             {
                IClickable click = hit.collider.gameObject.GetComponent<IClickable>();
-               if (click != null) click.onClickAction();
+               if (click != null) click.OnClickAction();
             }
         }
     }
