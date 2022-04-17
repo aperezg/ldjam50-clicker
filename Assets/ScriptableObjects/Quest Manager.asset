@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b489f493066ca247b3562ff390ff25d, type: 3}
+  m_Name: Quest Manager
+  m_EditorClassIdentifier: 
+  inversions:
+  - {fileID: 11400000, guid: 629d825e09611d34d8f69a244cfec5f1, type: 2}
+  - {fileID: 11400000, guid: 33f00eaa78c5d4a479e725ce6276ed0d, type: 2}
+  - {fileID: 11400000, guid: 9cc4ff24b8fb0f44b88c3a6c43514ee7, type: 2}
+  timerManager: {fileID: 11400000, guid: 6f757eb0c1142a244a050b386beee2c5, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Environment
   m_EditorClassIdentifier: 
   moneyManager: {fileID: 11400000, guid: cde9c7f5d12f0f7499ca3e507e29995b, type: 2}
-  inversionName: Environment
+  inversionType: 2
   baseCost: 100
   currentCos: 100
   currentInversion: 0

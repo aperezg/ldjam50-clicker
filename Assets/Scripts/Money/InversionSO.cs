@@ -4,10 +4,17 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName ="InversionSO", menuName ="ScriptableObjects/Inversion")]
 public class InversionSO : ScriptableObject
 {
+    public enum InversionType
+    {
+        HealthCare,
+        Defense,
+        Enviornment
+    }
+
     public MoneyManagerSO moneyManager;
 
     [SerializeField]
-    private string inversionName;
+    private InversionType inversionType;
     [SerializeField]
     private int baseCost;
     [SerializeField]
@@ -18,11 +25,11 @@ public class InversionSO : ScriptableObject
     private int incrementor;
 
     [System.NonSerialized]
-    public UnityEvent<int> investEvent;
+    public UnityEvent<InversionType, int> investEvent;
     [System.NonSerialized]
     public UnityEvent<int> changeCostEvent;
 
-    public string Name { get => inversionName; }
+    public InversionType Type { get => inversionType; }
     public int Inversion { get => currentInversion; }
     public int Cost { get => currentCos; }
     // Start is called before the first frame update
@@ -31,7 +38,7 @@ public class InversionSO : ScriptableObject
         currentCos = baseCost;
         currentInversion = 0;
         if (investEvent == null)
-            investEvent = new UnityEvent<int>();
+            investEvent = new UnityEvent<InversionType, int>();
 
         if (changeCostEvent == null)
             changeCostEvent = new UnityEvent<int>();
@@ -43,8 +50,9 @@ public class InversionSO : ScriptableObject
         {
             currentInversion += currentCos;
             moneyManager.DecrementMoney(currentCos);
+            investEvent.Invoke(inversionType, currentCos);
 
-            ModifyCost();
+            ModifyCost();            
         }  else
         {
             moneyManager.NotEnoughMoney();
