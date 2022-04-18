@@ -13,16 +13,26 @@ public class QuestManagerSO : ScriptableObject
 
     [System.NonSerialized]
     public UnityEvent questsUpdated;
+    [System.NonSerialized]
+    public UnityEvent<Quest> questAdded;
+    [System.NonSerialized]
+    public UnityEvent<string> questCompleted;
     
     public List<Quest> Quests { get => quests; }
     public void OnEnable()
     {
-        inversions.ForEach((x) => x.investEvent.AddListener(UpdateQuests));
         if (quests == null)
             quests = new List<Quest>();
 
         if (questsUpdated == null)
             questsUpdated = new UnityEvent();
+
+        if (questAdded == null)
+            questAdded = new UnityEvent<Quest>();
+
+        if (questCompleted == null)
+            questCompleted = new UnityEvent<string>();
+ 
     }
 
     public void OnDisable()
@@ -30,16 +40,12 @@ public class QuestManagerSO : ScriptableObject
         inversions.ForEach((x) => x.investEvent.RemoveListener(UpdateQuests));
     }
 
-    public void AddQuest()
+    public void AddQuest(Quest quest)
     {
-        //TODO:Change goal in base of some algorithm
-        Quest quest = new Quest(1000);
         quest.progressCompleted.AddListener(QuestCompleted);
 
         quests.Add(quest);
-        questsUpdated.Invoke();
-
-        Debug.Log("New Quest:" + quest.ID);
+        questAdded.Invoke(quest);
     }
 
     private void QuestCompleted(string questID)
@@ -50,14 +56,19 @@ public class QuestManagerSO : ScriptableObject
         //TODO: this should be configure on the quest?
         timerManager.AddTime(30);
 
-        questsUpdated.Invoke();
+        questCompleted.Invoke(q.ID);
     }
 
-    private void UpdateQuests(InversionSO.InversionType inversionType, int invest)
+    public void UpdateQuests(InversionSO.InversionType inversionType, int invest)
     {
        var questsByType = quests.FindAll(delegate (Quest q) { return q.Type == (Quest.QuestType)inversionType; });
        questsByType.ForEach((x) => x.Progress(invest));
 
        questsUpdated.Invoke();
+    }
+
+    public Quest GetQuestByID(string questID)
+    {
+        return quests.Find((x) => x.ID == questID);
     }
 }

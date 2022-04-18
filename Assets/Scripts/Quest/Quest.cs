@@ -19,6 +19,8 @@ public class Quest
 
     public QuestType Type { get => questType; }
     public string ID { get => questID; }
+    public int Goal { get => goal; }
+    public int CurrentProgress { get => goalProgress; }
 
     public Quest(int goal)
     {
@@ -39,6 +41,21 @@ public class Quest
         {
             goalProgress = goal;
             progressCompleted.Invoke(questID);
+        }
+    }
+
+    public string QuestName()
+    {
+        switch (questType)
+        {
+            case QuestType.HealthCare:
+                return "A new mortal virus";
+            case QuestType.Defense:
+                return "A mortal meteor";
+            case QuestType.Enviornment:
+                return "The global warming";
+            default:
+                return "";
         }
     }
 }

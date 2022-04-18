@@ -6,18 +6,25 @@ public class QuestController : MonoBehaviour
 {
     [Header("Dependencies")]
     public QuestManagerSO questManager;
+    [SerializeField] public List<InversionSO> inversions;
 
+    [Header("Configuration")]
     public int questsPerSecond;
     public int maxQuests;
 
-    private int _currentQuests;
+
     private float _remainingTimeQuest;
 
 
     private void OnEnable()
     {
-        _currentQuests = 0;
         _remainingTimeQuest = 0;
+        inversions.ForEach((x) => x.investEvent.AddListener(UpdateQuests));
+    }
+
+    private void OnDisable()
+    {
+        inversions.ForEach((x) => x.investEvent.RemoveListener(UpdateQuests));
     }
 
     // Update is called once per frame
@@ -32,7 +39,15 @@ public class QuestController : MonoBehaviour
             return;
         }
 
-        questManager.AddQuest();
-        _remainingTimeQuest = 0;  
+        //TODO:Change goal in base of some algorithm
+        Quest quest = new Quest(1000);
+
+        questManager.AddQuest(quest);
+        _remainingTimeQuest = 0;
+    }
+
+    private void UpdateQuests(InversionSO.InversionType inversionType, int invest)
+    {
+        questManager.UpdateQuests(inversionType, invest);
     }
 }
