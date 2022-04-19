@@ -35,11 +35,6 @@ public class QuestManagerSO : ScriptableObject
  
     }
 
-    public void OnDisable()
-    {
-        inversions.ForEach((x) => x.investEvent.RemoveListener(UpdateQuests));
-    }
-
     public void AddQuest(Quest quest)
     {
         quest.progressCompleted.AddListener(QuestCompleted);

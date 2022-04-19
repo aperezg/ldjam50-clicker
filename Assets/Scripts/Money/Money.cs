@@ -20,7 +20,7 @@ public class Money : MonoBehaviour
 
     private void DrawMoney(int amount)
     {
-        moneyText.text = string.Format("{0}$", amount.ToString());
+        moneyText.text = string.Format("{0}", amount.ToString());
     }
 
     public void IncrementMoney()

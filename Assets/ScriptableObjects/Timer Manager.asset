@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec259847604ce9f489dc89ec483b26db, type: 3}
   m_Name: Timer Manager
   m_EditorClassIdentifier: 
-  initTime: 600
-  currentTimer: 600
+  initTime: 60
+  currentTimer: 60
   timerRunning: 1

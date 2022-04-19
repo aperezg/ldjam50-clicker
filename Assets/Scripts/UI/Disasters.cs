@@ -28,8 +28,9 @@ public class Disasters : MonoBehaviour
     {
         var q = Instantiate(questPrefab, Vector3.zero, Quaternion.identity);
         q.transform.SetParent(questPanel.transform);
-        q.GetComponent<Disaster>().Initialize(quest.ID, quest.QuestName(), quest.Goal);
         q.transform.localScale = new Vector3(1f, 1f, 1f);
+        q.GetComponent<RectTransform>().localPosition = Vector3.zero;
+        q.GetComponent<Disaster>().Initialize(quest.ID, quest.QuestName(), quest.Type, quest.Goal);       
     }
 
     private void ModifyQuests() {

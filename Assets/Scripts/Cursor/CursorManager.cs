@@ -44,6 +44,7 @@ public class CursorManager : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            Debug.Log(hit.collider);
             if (hit.collider != null)
             {
                IClickable click = hit.collider.gameObject.GetComponent<IClickable>();

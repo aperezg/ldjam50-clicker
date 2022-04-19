@@ -7,7 +7,8 @@ public class Quest
     {
         HealthCare,
         Defense,
-        Enviornment
+        Enviornment,
+        None
     }
 
     private string questID;
@@ -24,7 +25,7 @@ public class Quest
 
     public Quest(int goal)
     {
-        float randomType = Random.Range(0, 2);
+        float randomType = Random.Range(0, 3);
 
         this.questID = System.Guid.NewGuid().ToString();
         this.goal = goal;

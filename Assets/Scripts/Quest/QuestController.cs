@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Quest;
 
 public class QuestController : MonoBehaviour
 {
@@ -14,11 +15,14 @@ public class QuestController : MonoBehaviour
 
 
     private float _remainingTimeQuest;
+    private QuestType _lastQuestType;
 
 
     private void OnEnable()
     {
         _remainingTimeQuest = 0;
+        _lastQuestType = QuestType.None;
+
         inversions.ForEach((x) => x.investEvent.AddListener(UpdateQuests));
     }
 
@@ -39,11 +43,21 @@ public class QuestController : MonoBehaviour
             return;
         }
 
-        //TODO:Change goal in base of some algorithm
-        Quest quest = new Quest(1000);
-
-        questManager.AddQuest(quest);
+        questManager.AddQuest(NextQuest());
         _remainingTimeQuest = 0;
+    }
+
+    private Quest NextQuest()
+    {
+        //TODO:Change goal in base of some algorithm
+
+        var quest = new Quest(1000);
+        if (quest.Type == _lastQuestType)
+        {
+            return NextQuest();
+        }
+        _lastQuestType = quest.Type;
+        return quest;
     }
 
     private void UpdateQuests(InversionSO.InversionType inversionType, int invest)

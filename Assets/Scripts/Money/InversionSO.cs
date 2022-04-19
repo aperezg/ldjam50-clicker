@@ -27,7 +27,7 @@ public class InversionSO : ScriptableObject
     [System.NonSerialized]
     public UnityEvent<InversionType, int> investEvent;
     [System.NonSerialized]
-    public UnityEvent<int> changeCostEvent;
+    public UnityEvent<InversionType, int> changeCostEvent;
 
     public InversionType Type { get => inversionType; }
     public int Inversion { get => currentInversion; }
@@ -41,7 +41,7 @@ public class InversionSO : ScriptableObject
             investEvent = new UnityEvent<InversionType, int>();
 
         if (changeCostEvent == null)
-            changeCostEvent = new UnityEvent<int>();
+            changeCostEvent = new UnityEvent<InversionType, int>();
     }
 
     public void Invest()
@@ -62,7 +62,7 @@ public class InversionSO : ScriptableObject
     private void ModifyCost()
     {
         currentCos += incrementor;
-        changeCostEvent.Invoke(currentCos);
+        changeCostEvent.Invoke(inversionType, currentCos);
     }
 
     private bool CanInvest()
