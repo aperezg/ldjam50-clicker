@@ -314,6 +314,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56966201}
   m_CullTransparentMesh: 1
+--- !u!1 &118288597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118288599}
+  - component: {fileID: 118288598}
+  m_Layer: 0
+  m_Name: Cursor Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &118288598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118288597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4655d8215d1e4a8458f836586db7b425, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: 3fba0353e7a700a43913625523672564, type: 3}
+--- !u!4 &118288599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118288597}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 769.8354, y: 469.29123, z: -24.706707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352326093
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1510071854297529193, guid: 232e0dcab46e76243b5f91e7679e0173, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1510071854297529193, guid: 232e0dcab46e76243b5f91e7679e0173, type: 3}
       propertyPath: m_LocalPosition.x
@@ -916,7 +960,7 @@ RectTransform:
   - {fileID: 1849367918}
   - {fileID: 1649807692}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -980,7 +1024,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You delayed the end of the world in:'
+  m_text: 'You''ve delayed the end of the world in:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 63d14a27eb029c7488f2d9695de55ba4, type: 2}
   m_sharedMaterial: {fileID: 4735195819352020506, guid: 63d14a27eb029c7488f2d9695de55ba4, type: 2}
@@ -1264,5 +1308,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
