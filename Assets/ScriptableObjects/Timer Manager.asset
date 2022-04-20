@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Timer Manager
   m_EditorClassIdentifier: 
   initTime: 60
-  currentTimer: 60
+  currentTimer: 3
   timerRunning: 1

@@ -37,7 +37,7 @@ public class TimerManagerSO : ScriptableObject
         if (timerRunning)
         {
             currentTimer -= amount;
-            if (currentTimer <= 0)
+            if (currentTimer < 0.75f)
             {
                 currentTimer = 0;
                 timerRunning = false;
@@ -49,7 +49,7 @@ public class TimerManagerSO : ScriptableObject
 
     public void AddTime(float amount)
     {
-        if (currentTimer <= 0)
+        if (currentTimer < 0.75f)
         {
             return;
         }
