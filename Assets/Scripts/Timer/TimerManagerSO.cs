@@ -12,15 +12,20 @@ public class TimerManagerSO : ScriptableObject
     private float currentTimer;
     [SerializeField]
     private bool timerRunning;
+    [SerializeField]
+    private float timeRewarded;
 
     [System.NonSerialized]
     public UnityEvent timerEndsEvent;
     [System.NonSerialized]
     public UnityEvent<float> timerChangeEvent;
 
+    public float TimeRewarded { get => timeRewarded;}
+
     private void OnEnable()
     {
-        currentTimer = initTime;
+        StartTimer();
+
         if (timerEndsEvent == null)
             timerEndsEvent = new UnityEvent();
         if (timerChangeEvent == null)
@@ -29,6 +34,8 @@ public class TimerManagerSO : ScriptableObject
 
     public void StartTimer()
     {
+        currentTimer = initTime;
+        timeRewarded = 0;
         timerRunning = true;
     }
 
@@ -54,6 +61,8 @@ public class TimerManagerSO : ScriptableObject
             return;
         }
         currentTimer += amount;
+        timeRewarded += amount;
+
         timerChangeEvent.Invoke(currentTimer);
     }
 

@@ -2022,6 +2022,7 @@ GameObject:
   - component: {fileID: 963918371}
   - component: {fileID: 963918373}
   - component: {fileID: 963918374}
+  - component: {fileID: 963918375}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -2091,6 +2092,25 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 629d825e09611d34d8f69a244cfec5f1, type: 2}
   - {fileID: 11400000, guid: 33f00eaa78c5d4a479e725ce6276ed0d, type: 2}
   - {fileID: 11400000, guid: 9cc4ff24b8fb0f44b88c3a6c43514ee7, type: 2}
+--- !u!114 &963918375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963918370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bc6952bbecf764b8ade45267bd2961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerManager: {fileID: 11400000, guid: 6f757eb0c1142a244a050b386beee2c5, type: 2}
+  inversions:
+  - {fileID: 11400000, guid: 629d825e09611d34d8f69a244cfec5f1, type: 2}
+  - {fileID: 11400000, guid: 33f00eaa78c5d4a479e725ce6276ed0d, type: 2}
+  - {fileID: 11400000, guid: 9cc4ff24b8fb0f44b88c3a6c43514ee7, type: 2}
+  moneyManager: {fileID: 11400000, guid: cde9c7f5d12f0f7499ca3e507e29995b, type: 2}
+  questManager: {fileID: 11400000, guid: cbcbe00c1c76d134f8de0e2ef0f3a829, type: 2}
 --- !u!1 &980127289
 GameObject:
   m_ObjectHideFlags: 0

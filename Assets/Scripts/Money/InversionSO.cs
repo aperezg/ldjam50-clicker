@@ -35,13 +35,18 @@ public class InversionSO : ScriptableObject
     // Start is called before the first frame update
     private void OnEnable()
     {
-        currentCos = baseCost;
-        currentInversion = 0;
+        Reset();
         if (investEvent == null)
             investEvent = new UnityEvent<InversionType, int>();
 
         if (changeCostEvent == null)
             changeCostEvent = new UnityEvent<InversionType, int>();
+    }
+
+    public void Reset()
+    {
+        currentCos = baseCost;
+        currentInversion = 0;
     }
 
     public void Invest()

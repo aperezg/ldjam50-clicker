@@ -35,6 +35,11 @@ public class QuestManagerSO : ScriptableObject
  
     }
 
+    public void Reset()
+    {
+        quests = new List<Quest>();
+    }
+
     public void AddQuest(Quest quest)
     {
         quest.progressCompleted.AddListener(QuestCompleted);

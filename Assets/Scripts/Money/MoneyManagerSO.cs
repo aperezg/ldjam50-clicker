@@ -30,6 +30,11 @@ public class MoneyManagerSO : ScriptableObject
             notEnoughMoneyEvent = new UnityEvent();
     }
 
+    public void Reset()
+    {
+        currentMoney = initMoney;
+    }
+
     public void DecrementMoney(int decrement)
     {
         currentMoney -= decrement;

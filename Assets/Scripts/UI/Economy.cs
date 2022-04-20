@@ -15,6 +15,7 @@ public class Economy : MonoBehaviour
     private void OnEnable()
     {
         inversions.ForEach((x) => x.changeCostEvent.AddListener(ChangeEconomy));
+        inversions.ForEach((x) => ChangeEconomy(x.Type, x.Cost));
     }
 
     private void OnDisable()

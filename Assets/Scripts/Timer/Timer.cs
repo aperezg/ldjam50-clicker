@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public TMP_Text timer;
     public TimerManagerSO timerManager;
 
-     private void OnEnable()
+    private void OnEnable()
     {
         timerManager.timerChangeEvent.AddListener(DrawTimer);
     }
